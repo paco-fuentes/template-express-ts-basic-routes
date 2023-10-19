@@ -1,51 +1,66 @@
-// aqui se aplica la lógica correspondiente
-// importado desde emmet con req: Request y res : Response
 import { Request, Response } from "express";
 
-// get
-const getTest = (req : Request, res : Response) => {
-    return res.send('GET FILMS');
+// get test
+const getTest = (req: Request, res: Response) => {
+    return res.send('GET TEST');
+};
+// get test by id
+const getTestById = (req: Request, res: Response) => {
+    const testId = req.params.id;
+    return res.send('GET TEST WITH ID: ' + testId);
+}
+
+// post test
+const createTest = (req: Request, res: Response) => {
+    //logic to post-create
+    // console.log(req.body);
+    // console.log(req.body.title);
+    // console.log(req.body.director);
+    return res.send('POST-CREATE TEST');
 };
 
-// get by id
-const getTestById = (req : Request, res : Response) => {
-    const TestId = req.params.id;
-    return res.send('GET FILM CON EL ID: ' + TestId);
-}
-
-// post
-const createTest = (req : Request, res : Response) => {
-    // logica para crear las peliculas
-    console.log(req.body);
-    console.log(req.body.title);
-    console.log(req.body.director);
-    return res.send('POST-CREATE FILMS');
+// post test by id
+const createTestById = (req: Request, res: Response) => {
+    // logic to post-create by id
+    const testId = req.params.id;
+    return res.send('POST-CREATE TEST WITH ID: ' + testId);
 };
 
-// put by id
-const updateTestById = (req : Request, res : Response) => {
-    // recuperamos la id
-    // recuperamos la info que quiero actualizar
-    // validamos la info
-    // comprobamos que existe y es mia
-    // guardamos la info
-    // devolvemos la respuesta
-
-    console.log(req.params);
-    const TestId = req.params.id;
-    return res.send('UPDATE FILM CON EL ID ' + TestId);
+// put test
+const updateTest = (req: Request, res: Response) => {
+    // logic to put - update
+    return res.send('PUT-UPDATE TEST');
 }
 
-// delete film by id
-const deleteTestById = (req : Request, res : Response) => {
-    // logica para eliminar peliculas
-
-    // 1 recuperar la id con req.params
-    // 2 comprobar que existe esa id, y que es mia
-    // 3 borraremos la pelicula
-
-    const TestId = req.params.id;
-    return res.send('DELETE FILM CON EL ID: ' + TestId);
+// put test by id
+const updateTestById = (req: Request, res: Response) => {
+    // logic to put - update by id
+    // console.log(req.params);
+    const testId = req.params.id;
+    return res.send('UPDATE TEST BY ID ' + testId);
 }
 
-export { getTest, createTest, updateTestById, getTestById, deleteTestById };
+// delete film
+const deleteTest = (req: Request, res: Response) => {
+    // logic to delete data
+    return res.send('DELETE TEST');
+}
+
+// delete test by id
+const deleteTestById = (req: Request, res: Response) => {
+    // logic to delete data by id
+    const testId = req.params.id;
+    return res.send('DELETE TEST BY ID: ' + testId);
+}
+
+// export crud
+export {
+    getTest,
+    getTestById,
+    createTest,
+    createTestById,
+    updateTest,
+    updateTestById,
+    deleteTest,
+    deleteTestById
+};

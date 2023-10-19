@@ -1,29 +1,30 @@
-// me traigo router desde express
+// 'Router' dependecies from 'express'
 import { Router } from "express";
 
-// import controllers
+// import from templateControllers.ts
 import {
     getTest,
-    createTest,
-    updateTestById,
     getTestById,
+    createTest,
+    createTestById,
+    updateTest,
+    updateTestById,
+    deleteTest,
     deleteTestById
 } from "../controllers/templateControllers"
 
-// lo guardo
+// template routes const
 const router = Router();
 
+// route crud
 router.get('/', getTest);
-router.post('/', createTest);
-// router.put('/', updateTestById);
-
-// put con /:id desde postman recuperamos el /754765 en nuestra consola
-router.put('/:id', updateTestById);
 router.get('/:id', getTestById);
-
-
-// delete film by id
+router.post('/', createTest);
+router.post('/:id', createTestById);
+router.put('/', updateTest);
+router.put('/:id', updateTestById);
+router.delete('/', deleteTest);
 router.delete('/:id', deleteTestById);
 
-// para hacer un import primero se hace un export
+// export template routes to index.ts
 export { router };
