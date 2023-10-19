@@ -2,10 +2,13 @@ import { Request, Response } from "express";
 
 // get test
 const getTest = (req: Request, res: Response) => {
+    // logic for get
     return res.send('GET TEST');
 };
 // get test by id
 const getTestById = (req: Request, res: Response) => {
+    // logic for get by id
+    // console.log(req.params);
     const testId = req.params.id;
     return res.send('GET TEST WITH ID: ' + testId);
 }
@@ -14,14 +17,15 @@ const getTestById = (req: Request, res: Response) => {
 const createTest = (req: Request, res: Response) => {
     //logic to post-create
     // console.log(req.body);
-    // console.log(req.body.title);
-    // console.log(req.body.director);
     return res.send('POST-CREATE TEST');
 };
 
 // post test by id
 const createTestById = (req: Request, res: Response) => {
     // logic to post-create by id
+    console.log(req.params);
+    console.log(req.body.test1);
+    console.log(req.body.test2);
     const testId = req.params.id;
     return res.send('POST-CREATE TEST WITH ID: ' + testId);
 };
@@ -49,6 +53,7 @@ const deleteTest = (req: Request, res: Response) => {
 // delete test by id
 const deleteTestById = (req: Request, res: Response) => {
     // logic to delete data by id
+    // console.log(req.params);
     const testId = req.params.id;
     return res.send('DELETE TEST BY ID: ' + testId);
 }
