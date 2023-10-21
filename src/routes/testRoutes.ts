@@ -11,7 +11,7 @@ import {
     updateTestById,
     deleteTest,
     deleteTestById
-} from "../controllers/templateControllers"
+} from "../controllers/testControllers"
 
 // template routes const
 const router = Router();

@@ -1,7 +1,7 @@
 // import express dependencies
 import express from "express";
 // import router from templateRoutes.ts
-import { router } from "./routes/templateRoutes"
+import { router } from "./routes/testRoutes"
 // import object from db.ts
 import { AppDataSource } from "./db";
 
