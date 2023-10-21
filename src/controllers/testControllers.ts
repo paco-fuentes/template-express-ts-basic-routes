@@ -1,61 +1,76 @@
 import { Request, Response } from "express";
+import { Test } from "../models/Test";
 
 // get test
-const getTest = (req: Request, res: Response) => {
-    // logic for get
-    return res.send('GET TEST');
+const getTest = async (req: Request, res: Response) => {
+    const tests = await Test.find();
+    return res.send(tests);
 };
 // get test by id
 const getTestById = (req: Request, res: Response) => {
-    // logic for get by id
-    // console.log(req.params);
-    const testId = req.params.id;
-    return res.send('GET TEST WITH ID: ' + testId);
 }
 
 // post test
-const createTest = (req: Request, res: Response) => {
-    //logic to post-create
-    // console.log(req.body);
-    return res.send('POST-CREATE TEST');
+const createTest = async (req: Request, res: Response) => {
+    try {
+        const newTest = await Test.create(
+            {
+                testString1: req.body.testString1,
+                testString2: req.body.testString2
+            }
+        ).save()
+        return res.send(newTest);
+    } catch (error) {
+        return res.send(error);
+    }
 };
 
 // post test by id
 const createTestById = (req: Request, res: Response) => {
-    // logic to post-create by id
-    console.log(req.params);
-    console.log(req.body.test1);
-    console.log(req.body.test2);
-    const testId = req.params.id;
-    return res.send('POST-CREATE TEST WITH ID: ' + testId);
 };
 
 // put test
 const updateTest = (req: Request, res: Response) => {
-    // logic to put - update
-    return res.send('PUT-UPDATE TEST');
 }
 
 // put test by id
-const updateTestById = (req: Request, res: Response) => {
-    // logic to put - update by id
-    // console.log(req.params);
-    const testId = req.params.id;
-    return res.send('UPDATE TEST BY ID ' + testId);
+const updateTestById = async (req: Request, res: Response) => {
+    try {
+        const testIdToUpdate = req.params.id;
+        const testUpdated = await Test.update(
+            { id: parseInt(testIdToUpdate) },
+            req.body);
+
+        if (testUpdated.affected) {
+            return res.json(`Se ha actualizado correctamente el test con id ${testIdToUpdate}`);
+        }
+        return res.json(`No se ha actualizado nada`);
+    } catch (error) {
+        return res.send(error);
+    }
 }
 
 // delete film
 const deleteTest = (req: Request, res: Response) => {
-    // logic to delete data
-    return res.send('DELETE TEST');
 }
 
 // delete test by id
-const deleteTestById = (req: Request, res: Response) => {
-    // logic to delete data by id
-    // console.log(req.params);
-    const testId = req.params.id;
-    return res.send('DELETE TEST BY ID: ' + testId);
+const deleteTestById = async (req: Request, res: Response) => {
+    try {
+        const testIdToDelete = req.params.id;
+        const testDeleted = await Test.delete(
+            {
+                id: parseInt(testIdToDelete)
+            }
+        );
+
+        if (testDeleted.affected) {
+            return res.send(`Se ha elminado correctamente el test con id ${testIdToDelete}`);
+        }
+        return res.send(`No se ha borrado nada`);
+    } catch (error) {
+        return res.send(error);
+    }
 }
 
 // export crud
