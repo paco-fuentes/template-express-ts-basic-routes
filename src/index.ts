@@ -2,6 +2,8 @@
 import express from "express";
 // import router from templateRoutes.ts
 import { router } from "./routes/templateRoutes"
+// import object from db.ts
+import { AppDataSource } from "./db";
 
 // express on const app
 const app = express();
@@ -14,7 +16,18 @@ app.use(express.json());
 // test endpoint with routes from imported templateRoutes.ts
 app.use('/test', router);
 
-// port listener and log
-app.listen(PORT, () => {
-    console.log(`Server Running: ¡Hello World from localhost ${PORT}!`);
-});
+
+AppDataSource.initialize()
+    .then(() => {
+        console.log('Database connected');
+
+
+        // port listener and log
+        app.listen(PORT, () => {
+            console.log(`Server Running: ¡Hello World from localhost ${PORT}!`);
+        });
+
+    })
+    .catch(error => {
+        console.log(error)
+    })
