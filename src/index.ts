@@ -19,7 +19,7 @@ app.use('/test', router);
 
 AppDataSource.initialize()
     .then(() => {
-        console.log('Database connected');
+        console.log(`Connected to Database : testDB`);
 
 
         // port listener and log
