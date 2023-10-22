@@ -1,6 +1,11 @@
 
 # Express TypeScript Basic Routes Template
 
+### On branch 'main'
+#### Example for backend project CRUD user system.
+This example demonstrates a CRUD system that utilizes an API to establish a connection between a client and a MySQL database. The API is accessible via the '/test' endpoint, hosted locally. This solution is built using the Express framework and TypeORM, ensuring efficient data management and connectivity
+
+### On branch 'template-express-basic-routes'
 #### Template for backend projects using Node and Express written in TypeScript, with basic routes already defined.
 
 ##### Follow these steps to get started:
