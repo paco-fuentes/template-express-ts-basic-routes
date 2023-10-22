@@ -8,7 +8,6 @@ const getTest = (req: Request, res: Response) => {
 // get test by id
 const getTestById = (req: Request, res: Response) => {
     // logic for get by id
-    // console.log(req.params);
     const testId = req.params.id;
     return res.send('GET TEST WITH ID: ' + testId);
 }
